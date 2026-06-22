@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+
+#display {
+  background-color: black;
+  width: 90%;
+  height: 50rem;
+  margin: 4rem 5%;
+  padding: 1rem 2rem 1rem 1rem;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.split-flap {
+  position: relative;
+  width: 4rem;
+  height: 8rem;
+  margin: 1rem;
+  display: flex;
+}
+
+.current {
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.next {
+  display: flex;
+}
+
+.top, .bottom {
+  position: absolute;
+  background-color: darkslategray;
+  width: 4rem;
+  height: 8rem;
+
+  font-size: 4rem;
+  color: white;
+  white-space: pre;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,12 @@
+* = done
+
+1. Set up the basic react router functionality (home, about, contact).
+2. Develop home, about, and contact pages.
+3. Create some simple unit tests with jest.
+4. Add the split-flap display to the home page.
+5. Set up the store/states with react-redux.
+6. Make it look good.
+7. Allow users to save custom configurations (text, dimensions, etc.),
+    probably with json text in a txt file or the browser's local storage.
+8. More test coverage required?
+9. Showcase?
