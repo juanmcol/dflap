@@ -5,6 +5,8 @@ import ContactPage from '../pages/ContactPage.jsx';
 import AboutPage from '../pages/AboutPage.jsx';
 import NotFoundPage from '../pages/NotFoundPage.jsx';
 
+const basename = import.meta.env.PROD ? "/dflap" : "/";
+
 export const router = createBrowserRouter(
   [
     {
@@ -21,5 +23,5 @@ export const router = createBrowserRouter(
       element: <AboutPage/>
     }
   ],
-  { basename: '/dflap' } 
+  { basename: basename } 
 );
