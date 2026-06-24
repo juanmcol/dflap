@@ -6,13 +6,15 @@ import characters from '../../assets/comps/characters';
 const initialState = {
   data: characters,
   flapOutput: [
-    "H", "E", "L", "L", "O", ",", " ",
-    "W", "O", "R", "L", "D", "!"
+    ["H", "E", "L", "L", "O", ",", " ",
+    "W", "O", "R", "L", "D", "!"]
   ],
   flapIndex: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  rows: 9,
-  columns: 16,
-  middle: 72,
+  rows: 5,
+  columns: 21,
+  limit: 21,
+  justify: "center",
+  custom: false,
   isLoading: false,
   hasError: false
 };
@@ -29,21 +31,47 @@ const displaySlice = createSlice({
       state.flapOutput.forEach(e => state.flapIndex.push(state.data.indexOf(e)));
     },
     updateFlapOutput: (state, action) => {
-      // state.flapOutput = action.payload;
-      state.flapOutput = [];
-      console.log(state.flapOutput);
-      for (let i = 0; i < 52 - Math.floor(action.payload.length / 2); ++i) {
-        state.flapOutput.push(" ");
+      state.flapOutput = action.payload;
+      
+      // justify
+      if (state.justify === "left") {
+        state.flapOutput.forEach(arr => {
+          const length1 = arr.length;
+          arr.length = state.columns;
+          arr.fill(" ", length1, arr.length);
+        })
+      } else if (state.justify === "center") {
+        state.flapOutput.forEach(arr => {
+          const length1 = arr.length;
+          const side = Math.floor((state.columns - length1) / 2);
+          for (let i = 0; i < side; ++i) {
+            arr.unshift(" ");
+          }
+          const length2 = side + length1;
+          arr.length = state.columns;
+          arr.fill(" ", length2, arr.length);
+        })
       }
-      console.log(state.flapOutput);
-      action.payload.forEach(e => state.flapOutput.push(e));
-      console.log(state.flapOutput);
-      for (let i = 0; i < 52 - Math.floor(action.payload.length / 2); ++i) {
-        state.flapOutput.push(" ");
+
+      if (state.flapOutput.length > 5) {
+        state.flapOutput = state.flapOutput.slice(0, 5);
       }
-      console.log(state.flapOutput);
-      if (action.payload.length % 2 === 0) {
-        state.flapOutput.push(" ");
+      const upper = Math.ceil(state.rows / 2);
+
+      if (state.custom === false) {
+        while (state.flapOutput.length < upper) {
+          state.flapOutput = [
+            Array(state.columns).fill(state.data[0]),
+            ...state.flapOutput
+          ]
+        }
+      }
+      
+      while (state.flapOutput.length < state.rows) {
+        state.flapOutput = [
+          ...state.flapOutput,
+          Array(state.columns).fill(state.data[0])
+        ]
       }
     },
     updateFlapIndex: (state, action) => {
@@ -75,4 +103,4 @@ export default displaySlice.reducer;
 export const selectDisplayData = (state) => state.display.data;
 export const selectFlapOutput = (state) => state.display.flapOutput;
 export const selectFlapIndex = (state) => state.display.flapIndex;
-export const selectDisplayMiddle = (state) => state.display.middle;
+export const selectDisplayLimit = (state) => state.display.limit;

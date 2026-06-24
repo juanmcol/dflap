@@ -1,24 +1,53 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { selectInput, setInput } from './textInputSlice';
-import { updateFlapOutput } from '../display/displaySlice';
+import { updateFlapOutput, selectDisplayLimit, selectDisplayData } from '../display/displaySlice';
 
-// Text Input component.
-// Originally it just updates the output,
-// but I want it to push different output arrays of characters to an array (add button),
-// and then have the display will swap between them on an interval.
 export const TextInput = () => {
   const input = useSelector(selectInput);
+  const limit = useSelector(selectDisplayLimit);
+  const data = useSelector(selectDisplayData);
   const dispatch = useDispatch();
-
-  const [text, setText] = useState("");
-
+  
   const onTextChangeHandler = (e) => {
-    setText(e.target.value);
+    dispatch(setInput(e.target.value));
   }
 
   const onClickInputHandler = () => {
-    dispatch(updateFlapOutput(text.toUpperCase().split("")));
+    // dispatch(updateFlapOutput([text.toUpperCase().split("")]));
+    let filter = "";
+    for (const char of input) {
+      if (data.includes(char.toUpperCase())) {
+        filter += char.toUpperCase();
+      } else {
+        filter += "?";
+      }
+    }
+    
+    let words = filter.split(" ");
+    console.log(words);
+    words = words.filter(word => word !== "");
+    
+    const grid = [];
+    let row = "";
+
+    for(let i = 0; i < words.length; ++i) {
+      console.log(words[i]);
+      if (row.length === 0) {
+        row = words[i];
+      } else if (row.length + words[i].length < limit) {
+        row += " " + words[i];
+      } else {
+        grid.push(row.split(""));
+        row = words[i];
+      }
+
+      if (!words[i + 1]) {
+        grid.push(row.split(""));
+      }
+    }
+
+    dispatch(updateFlapOutput(grid));
   }
 
   return (
@@ -28,6 +57,7 @@ export const TextInput = () => {
         type="text"
         placeholder="type here"
         onChange={onTextChangeHandler}
+        maxLength={105}
       />
       <button
         id="add-button"

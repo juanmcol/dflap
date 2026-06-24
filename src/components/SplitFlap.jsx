@@ -15,11 +15,11 @@ function SplitFlap({index, element}) {
   const limit = data.length - 1;
   let i1 = start;
   let i2 = start + 1;
+  let loop = 0;
 
   useEffect(() => {
     if (current === stop) {
       dispatch(updateFlapIndex({index, value: data.indexOf(current)}));
-      console.log(flapIndex);
       return;
     }
 
@@ -44,6 +44,8 @@ function SplitFlap({index, element}) {
 
     return () => clearInterval(interval);
   }, [current !== stop]);
+
+  loop = 0;
 
   return (
     <div className="split-flap">

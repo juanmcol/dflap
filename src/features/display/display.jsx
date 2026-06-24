@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { selectDisplayData, loadData, setFlapIndex, selectFlapIndex, selectFlapOutput, selectDisplayMiddle, updateFlapOutput } from "./displaySlice.jsx";
+import { selectDisplayData, loadData, setFlapIndex, selectFlapIndex, selectFlapOutput, updateFlapOutput } from "./displaySlice.jsx";
 import SplitFlap from "../../components/SplitFlap.jsx";
 
 export const Display = () => {
@@ -11,17 +11,16 @@ export const Display = () => {
 
   const onFirstRender = () => {
     dispatch(loadData());
-    dispatch(updateFlapOutput(flapOutput));
+    dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
     /* dispatch(setFlapIndex()); */
   }
   useEffect(onFirstRender, []);
-  
 
   return (
     <div id="display">
       {
-        flapOutput.map((e, index) => {
-          return <SplitFlap key={index} index={index} element={e}/>;
+        flapOutput.flat().map((e, index) => {
+          return <SplitFlap key={index} index={index} element={e}/>
         })
       }
     </div>

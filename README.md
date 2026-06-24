@@ -5,9 +5,9 @@ A digital split-flap display
 WIP (Work in Progress)
 
 ## To-do
-- Add multiple inputs, one for each row.
-- Add a custom input that will set up all flaps, instead of row by row. Positioning will be up to the user.
+- Add options to change positioning.
 - Add more css, and proper animations.
+- Add multiple inputs, one for each row.
 
 ## Technologies
 Languages: HTML, CSS, Javascript
