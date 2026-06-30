@@ -17,12 +17,14 @@ export const Display = () => {
   useEffect(onFirstRender, []);
 
   return (
-    <div id="display">
-      {
-        flapOutput.flat().map((e, index) => {
-          return <SplitFlap key={index} index={index} element={e}/>
-        })
-      }
+    <div id="display-container">
+      <div id="display">
+        {
+          flapOutput.flat().map((e, index) => {
+            return <SplitFlap key={index} index={index} element={e}/>
+          })
+        }
+      </div>
     </div>
   )
 }

@@ -53,17 +53,28 @@ const displaySlice = createSlice({
         })
       }
 
+      // remove extra lines
       if (state.flapOutput.length > 5) {
         state.flapOutput = state.flapOutput.slice(0, 5);
       }
-      const upper = Math.ceil(state.rows / 2);
+      let upper = Math.ceil(state.rows / 2);
 
       if (state.custom === false) {
-        while (state.flapOutput.length < upper) {
-          state.flapOutput = [
-            Array(state.columns).fill(state.data[0]),
-            ...state.flapOutput
-          ]
+        if (state.flapOutput.length < upper) {
+          while (state.flapOutput.length < upper) {
+            state.flapOutput = [
+              Array(state.columns).fill(state.data[0]),
+              ...state.flapOutput
+            ]
+          }
+        } else if ((state.flapOutput.length + 2) <= state.rows) {
+          while (state.flapOutput.length >= upper) {
+            state.flapOutput = [
+              Array(state.columns).fill(state.data[0]),
+              ...state.flapOutput
+            ]
+            upper *= 2;
+          }
         }
       }
       

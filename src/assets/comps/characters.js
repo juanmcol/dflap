@@ -12,7 +12,7 @@ const characters = [
   "8", "9",
 
   ".", ",", "!", "?",
-  "-", "$", "+"
+  "'", '"', "$", "+"
 ]
 
 export default characters;
