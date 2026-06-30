@@ -60,7 +60,7 @@ export const TextInput = () => {
         maxLength={105}
       />
       <button
-        id="add-button"
+        id="change-button"
         type="button"
         onClick={onClickInputHandler}
       >change</button>

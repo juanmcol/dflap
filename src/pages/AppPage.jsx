@@ -8,9 +8,11 @@ function AppPage() {
   return (
     <>
       <header>
-        <h1>DFLAP</h1>
-        <p>a digital split-flap display</p>
-        <p>*Now with Redux and Routing!*</p>
+        <div id='info'>
+          <h1>DFLAP</h1>
+          <p>a digital split-flap display</p>
+        </div>
+        <h3 id="update-info">*Now with Redux and Routing!*</h3>
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -26,6 +28,7 @@ function AppPage() {
         </div>
       </main>
       <footer>
+        <p>copyright juanmcol</p>
       </footer>
     </>
   )
