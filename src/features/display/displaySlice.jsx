@@ -15,8 +15,9 @@ const initialState = {
   limit: 21,
   justify: "center",
   custom: false,
+  deviceW: screen.width,
   isLoading: false,
-  hasError: false
+  hasError: false,
 };
 
 const displaySlice = createSlice({
@@ -88,7 +89,61 @@ const displaySlice = createSlice({
     updateFlapIndex: (state, action) => {
       const {index, value} = action.payload;
       state.flapIndex[index] = value;
-    }
+    },
+    setColumns: (state, action) => {
+      const width = action.payload;
+
+      if (width >= 3823) {
+        state.columns = 43;
+      } else if (width >= 2134) {
+        state.columns = 24;
+      } else if (width >= 1868) {
+        state.columns = 21;
+      } else if (width >= 1778) {
+        state.columns = 20;
+      } else if (width >= 1690) {
+        state.columns = 19;
+      } else if (width >= 1600) {
+        state.columns = 18;
+      } else if (width >= 1512) {
+        state.columns = 17;
+      } else if (width >= 1424) {
+        state.columns = 16;
+      } else if (width >= 1334) {
+        state.columns = 15;
+      } else if (width >= 1246) {
+        state.columns = 14;
+      } else if (width >= 1156) {
+        state.columns = 13;
+      } else if (width >= 1068) {
+        state.columns = 12;
+      } else if (width >= 978) {
+        state.columns = 11;
+      } else if (width >= 890) {
+        state.columns = 10;
+      } else if (width >= 800) {
+        state.columns = 9;
+      } else if (width >= 712) {
+        state.columns = 8;
+      } else if (width >= 624) {
+        state.columns = 7;
+      } else if (width >= 534) {
+        state.columns = 6;
+      } else if (width >= 446) {
+        state.columns = 5;
+      } else if (width >= 356) {
+        state.columns = 4;
+      } else if (width >= 268) {
+        state.columns = 3;
+      } else if (width >= 184) {
+        state.columns = 2;
+      } else {
+        state.columns = 1;
+      }
+    },
+    setLimit: (state) => {
+      state.limit = state.columns;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -108,7 +163,7 @@ const displaySlice = createSlice({
   }
 })
 
-export const { loadData, setFlapIndex, updateFlapIndex, updateFlapOutput } = displaySlice.actions;
+export const { loadData, setFlapIndex, updateFlapOutput, updateFlapIndex, setColumns, setLimit } = displaySlice.actions;
 export default displaySlice.reducer;
 
 export const selectDisplayData = (state) => state.display.data;

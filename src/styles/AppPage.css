@@ -17,7 +17,7 @@ header {
 
     h1 {
       font-family: 'Courier New', Courier, monospace;
-    } 
+    }
   }
 
   #update-info {
@@ -70,7 +70,7 @@ main {
     justify-content: center;
   
     background-color: white;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
   }
   
   #display {
@@ -121,7 +121,10 @@ main {
 
 footer {
   background-color: black;
+  position: relative;
+  margin-top: 1.5rem;
   height: 1.5rem;
+  width: 100vw;
   color: white;
   padding: 0 1rem;
 
