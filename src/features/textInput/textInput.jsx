@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { selectInput, setInput } from './textInputSlice';
 import { updateFlapOutput, selectDisplayLimit, selectDisplayData } from '../display/displaySlice';
+import { onClickInputHandler } from './onClickInputHandler';
 
 export const TextInput = () => {
   const input = useSelector(selectInput);
@@ -13,7 +14,7 @@ export const TextInput = () => {
     dispatch(setInput(e.target.value));
   }
 
-  const onClickInputHandler = () => {
+  /* const onClickInputHandler = () => {
     // dispatch(updateFlapOutput([text.toUpperCase().split("")]));
     let filter = "";
     for (const char of input) {
@@ -49,6 +50,7 @@ export const TextInput = () => {
 
     dispatch(updateFlapOutput(grid));
   }
+ */
 
   return (
     <div id="text-input-container">
@@ -62,7 +64,7 @@ export const TextInput = () => {
       <button
         id="change-button"
         type="button"
-        onClick={onClickInputHandler}
+        onClick={() => dispatch(updateFlapOutput(onClickInputHandler(input, data, limit)))}
       >change</button>
     </div>
   )

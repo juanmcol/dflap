@@ -1,24 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { loadData, selectFlapOutput, updateFlapOutput, setColumns, setLimit } from "./displaySlice.jsx";
+import { loadData, selectFlapOutput, updateFlapOutput, setColumns, setLimit, selectDisplayData, selectDisplayLimit } from "./displaySlice.jsx";
 import SplitFlap from "../../components/SplitFlap.jsx";
+import { onClickInputHandler } from "../textInput/onClickInputHandler.js";
+import { selectInput } from "../textInput/textInputSlice.jsx";
 
 export const Display = () => {
   const dispatch = useDispatch();
   const flapOutput = useSelector(selectFlapOutput);
+  const input = useSelector(selectInput);
+  const data = useSelector(selectDisplayData);
+  const limit = useSelector(selectDisplayLimit);
+  
+  // update the display when the window size changes.
+  const [currentWidth, setCurrentWidth] = useState(0);
 
+  // first render
   const onFirstRender = () => {
     const deviceWidth = screen.width;
     dispatch(loadData());
     dispatch(setColumns(deviceWidth));
-    dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
-    /* dispatch(setFlapIndex()); */
+    dispatch(setLimit());
+    // dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
+    dispatch(updateFlapOutput(onClickInputHandler(input, data, limit)));
+    setCurrentWidth(deviceWidth);
   }
   useEffect(onFirstRender, []);
 
-  // update the display when the window size changes.
-  const [currentWidth, setCurrentWidth] = useState(0);
-
+  // update screen width every x ms
   const interval = setInterval(() => {
     setCurrentWidth(window.innerWidth);
   }, 2000)
@@ -26,10 +35,11 @@ export const Display = () => {
   useEffect(() => {
     console.log(currentWidth);
     dispatch(setColumns(currentWidth));
-    dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
     dispatch(setLimit());
+    dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
   }, [currentWidth])
 
+  // component
   return (
     <div id="display-container">
       <div id="display">

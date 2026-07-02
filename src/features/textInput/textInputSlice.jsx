@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  input: ''
+  input: 'Hello, World!'
 };
 
 const textInputSlice = createSlice({
@@ -10,7 +10,7 @@ const textInputSlice = createSlice({
   reducers: {
     setInput: (state, action) => {
       state.input = action.payload;
-    }
+    },
   }
 })
 
