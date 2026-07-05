@@ -15,18 +15,6 @@ export const Display = () => {
   // update the display when the window size changes.
   const [currentWidth, setCurrentWidth] = useState(0);
 
-  // first render
-  const onFirstRender = () => {
-    const deviceWidth = screen.width;
-    dispatch(loadData());
-    dispatch(setColumns(deviceWidth));
-    dispatch(setLimit());
-    // dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
-    dispatch(updateFlapOutput(onClickInputHandler(input, data, limit)));
-    setCurrentWidth(deviceWidth);
-  }
-  useEffect(onFirstRender, []);
-
   // update screen width every x ms
   const interval = setInterval(() => {
     setCurrentWidth(window.innerWidth);
@@ -38,6 +26,19 @@ export const Display = () => {
     dispatch(setLimit());
     dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
   }, [currentWidth])
+
+  // first render
+  const onFirstRender = () => {
+    const deviceWidth = screen.width;
+    dispatch(loadData());
+    dispatch(setColumns(deviceWidth));
+    dispatch(setLimit());
+    // dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
+    dispatch(updateFlapOutput(onClickInputHandler(input, data, limit)));
+    setCurrentWidth(deviceWidth);
+  }
+  useEffect(onFirstRender, []);
+    
 
   // component
   return (
