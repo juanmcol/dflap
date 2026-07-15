@@ -11,11 +11,12 @@ function SplitFlap({index, element}) {
   const stop = element;
   const [current, setCurrent] = useState(data[start]);
   const [next, setNext] = useState(data[start + 1]);
+
+  const [animate, setAnimate] = useState(true);
   
   const limit = data.length - 1;
   let i1 = start;
   let i2 = start + 1;
-  let loop = 0;
 
   useEffect(() => {
     if (current === stop) {
@@ -40,22 +41,28 @@ function SplitFlap({index, element}) {
         setNext(data[i2]);
         setCurrent(data[i1]);
       }
-    }, 50);
+    }, 80);
 
     return () => clearInterval(interval);
   }, [current !== stop]);
 
-  loop = 0;
+  useEffect(() => {
+    setAnimate(true);
+
+    setTimeout(() => {
+      setAnimate(false);
+    }, 80);
+  }, [current])
 
   return (
     <div className="split-flap">
       <div className="current">
-        <div className="top">{current}</div>
+        <div className={ animate ? "top flipTop" : "top" }>{current}</div>
         <div className="bottom">{current}</div>
       </div>
       <div className="next">
         <div className="top">{next}</div>
-        <div className="bottom">{next}</div>
+        <div className={ animate ? "bottom flipBot" : "bottom" }>{next}</div>
       </div>
     </div>
   );
