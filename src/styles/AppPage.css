@@ -47,6 +47,7 @@ header {
   }
 }
 
+
 main {
   #text-input-container {
     padding: 4rem 2rem;
@@ -66,7 +67,72 @@ main {
       width: 10%;
     }
   }
-  
+
+  #settings {
+    position: static;
+    z-index: 4;
+    border: 2px solid gray;
+    height: 10rem;
+    width: 10rem;
+    background-color: lightgray;
+    
+    .toggle {
+      width: 10rem;
+      height: 2rem;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .toggle-button {
+      width: 1.3rem;
+      height: 1.3rem;
+
+      position: absolute;
+      z-index: 2;
+      left: 0.22rem;
+      
+      border-radius: 1rem;
+      border: 1px solid gray;
+    }
+
+    .toggle-button:active {
+      /* left: 2.76rem; */
+    }
+
+    .toggle-background {
+      display: flex;
+      width: 4rem;
+      height: 1.5rem;
+      background-color: black;
+      border-radius: 1rem;
+      overflow: hidden;
+
+      font-size: 1.2rem;
+      color: white;
+      text-align: center;
+      background-color: red;
+      
+      .toggle-green {
+        display: none;
+        position: relative;
+        width: 100%;
+        background-color: green;
+        align-content: center;
+        right: 0.7rem;
+      }
+      .toggle-red {
+        display: block;
+        position: relative;
+        width: 100%;
+        background-color: red;
+        align-content: center;
+        left: 0.7rem;
+      }
+    }
+  }
+
+
   #display-container {
     width: 100%;
     height: fit-content;

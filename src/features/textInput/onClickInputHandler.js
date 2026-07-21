@@ -15,7 +15,7 @@ export const onClickInputHandler = (input, data, limit) => {
   const grid = [];
   let row = "";
 
-  for(let i = 0; i < words.length; ++i) {
+  for (let i = 0; i < words.length; ++i) {
     console.log(words[i]);
     if (row.length === 0) {
       row = words[i];

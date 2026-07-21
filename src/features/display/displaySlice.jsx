@@ -144,6 +144,16 @@ const displaySlice = createSlice({
     setLimit: (state) => {
       state.limit = state.columns;
     },
+    setJustify: (state, action) => {
+      const position = action.payload;
+      if (position === "left" || position === "center" || position === "right")
+        state.justify = position;
+      else
+        console.log("invalid assignment for state.display.justify");
+    },
+    setCustom: (state, action) => {
+      state.custom = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -163,10 +173,12 @@ const displaySlice = createSlice({
   }
 })
 
-export const { loadData, setFlapIndex, updateFlapOutput, updateFlapIndex, setColumns, setLimit } = displaySlice.actions;
+export const { loadData, setFlapIndex, updateFlapOutput, updateFlapIndex, setColumns, setLimit, setJustify, setCustom } = displaySlice.actions;
 export default displaySlice.reducer;
 
 export const selectDisplayData = (state) => state.display.data;
 export const selectFlapOutput = (state) => state.display.flapOutput;
 export const selectFlapIndex = (state) => state.display.flapIndex;
 export const selectDisplayLimit = (state) => state.display.limit;
+export const selectDisplayCustom = (state) => state.display.custom;
+export const selectDisplayJustify = (state) => state.display.justify;

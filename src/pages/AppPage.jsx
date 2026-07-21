@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/AppPage.css';
 import { Display } from '../features/display/display.jsx';
 import { TextInput } from '../features/textInput/textInput.jsx';
+import { Settings } from '../components/Settings.jsx';
 
 function AppPage() {
   return (
@@ -24,6 +25,7 @@ function AppPage() {
       <main>
         <div id="dflap">
           <TextInput/>
+          <Settings/>
           <Display/>
         </div>
       </main>

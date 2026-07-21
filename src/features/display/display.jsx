@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { loadData, selectFlapOutput, updateFlapOutput, setColumns, setLimit, selectDisplayData, selectDisplayLimit } from "./displaySlice.jsx";
+import { loadData, selectFlapOutput, updateFlapOutput, setColumns, setLimit, selectDisplayData, selectDisplayLimit, selectDisplayCustom } from "./displaySlice.jsx";
 import SplitFlap from "../../components/SplitFlap.jsx";
 import { onClickInputHandler } from "../textInput/onClickInputHandler.js";
 import { selectInput } from "../textInput/textInputSlice.jsx";
@@ -11,6 +11,7 @@ export const Display = () => {
   const input = useSelector(selectInput);
   const data = useSelector(selectDisplayData);
   const limit = useSelector(selectDisplayLimit);
+  const custom = useSelector(selectDisplayCustom);
   
   // update the display when the window size changes.
   const [currentWidth, setCurrentWidth] = useState(0);
@@ -26,6 +27,11 @@ export const Display = () => {
     dispatch(setLimit());
     dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
   }, [currentWidth])
+
+  useEffect(() => {
+    console.log(custom);
+    dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
+  }, [custom])
 
   // first render
   const onFirstRender = () => {
