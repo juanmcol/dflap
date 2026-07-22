@@ -39,7 +39,6 @@ export const Display = () => {
     dispatch(loadData());
     dispatch(setColumns(deviceWidth));
     dispatch(setLimit());
-    // dispatch(updateFlapOutput(flapOutput.map(row => [...row])));
     dispatch(updateFlapOutput(onClickInputHandler(input, data, limit)));
     setCurrentWidth(deviceWidth);
   }

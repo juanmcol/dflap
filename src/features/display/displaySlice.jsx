@@ -13,7 +13,7 @@ const initialState = {
   rows: 5,
   columns: 21,
   limit: 21,
-  justify: "center",
+  justify: true,
   custom: false,
   deviceW: screen.width,
   isLoading: false,
@@ -35,13 +35,13 @@ const displaySlice = createSlice({
       state.flapOutput = action.payload;
       
       // justify
-      if (state.justify === "left") {
+      if (state.justify === false) {
         state.flapOutput.forEach(arr => {
           const length1 = arr.length;
           arr.length = state.columns;
           arr.fill(" ", length1, arr.length);
         })
-      } else if (state.justify === "center") {
+      } else if (state.justify === true) {
         state.flapOutput.forEach(arr => {
           const length1 = arr.length;
           const side = Math.floor((state.columns - length1) / 2);
@@ -146,7 +146,7 @@ const displaySlice = createSlice({
     },
     setJustify: (state, action) => {
       const position = action.payload;
-      if (position === "left" || position === "center" || position === "right")
+      if (position === true || position === false)
         state.justify = position;
       else
         console.log("invalid assignment for state.display.justify");
