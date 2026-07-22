@@ -96,38 +96,28 @@ main {
       border: 1px solid gray;
     }
 
-    .toggle-button:active {
-      /* left: 2.76rem; */
-    }
-
     .toggle-background {
       display: flex;
       width: 4rem;
       height: 1.5rem;
-      background-color: black;
       border-radius: 1rem;
       overflow: hidden;
 
       font-size: 1.2rem;
       color: white;
       text-align: center;
-      background-color: red;
       
       .toggle-green {
-        display: none;
         position: relative;
         width: 100%;
-        background-color: green;
         align-content: center;
-        right: 0.7rem;
+        left: 0.5rem;
       }
       .toggle-red {
-        display: block;
         position: relative;
         width: 100%;
-        background-color: red;
         align-content: center;
-        left: 0.7rem;
+        right: 0.5rem;
       }
     }
   }
@@ -229,6 +219,9 @@ footer {
   align-items: center;
 }
 
+
+/* Animations */
+
 .flipTop {
   animation: flipTop 80ms;
 }
@@ -309,4 +302,35 @@ footer {
     transform: scaleY(1);
     background-color: #252525;
   }
+}
+
+.toggleSwitchOn {
+  translate: 2.54rem;
+  transition: 1s ease;
+}
+
+.toggleSwitchOff {
+  translate: 0rem;
+  transition: 1s ease;
+}
+
+.toggleBackgroundOn {
+  background-color: green;
+  transition: 1s ease;
+}
+
+.toggleBackgroundOff {
+  background-color: red;
+  transition: 1s ease;
+}
+
+.toggleTextShow {
+  display: block;
+  opacity: 1;
+  transition: 1s ease;
+}
+
+.toggleTextHide {
+  display: hidden;
+  opacity: 0;
 }

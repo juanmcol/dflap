@@ -24,8 +24,8 @@ function AppPage() {
       </header>
       <main>
         <div id="dflap">
-          <TextInput/>
           <Settings/>
+          <TextInput/>
           <Display/>
         </div>
       </main>

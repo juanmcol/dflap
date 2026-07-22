@@ -15,13 +15,14 @@ export const Settings = () => {
 
   return (
     <div id="settings">
+      <p>Click change to apply changes</p>
       <div class="toggle-option">
         <p>Custom: </p>
         <div class="toggle">
-          <button class="toggle-button" onClick={handleCustom}/>
-          <div class="toggle-background">
-            <div class="toggle-green">On</div>
-            <div class="toggle-red">Off</div>
+          <button class={ custom ? "toggle-button toggleSwitchOn" : "toggle-button toggleSwitchOff" } onClick={handleCustom}/>
+          <div class={ custom ? "toggle-background toggleBackgroundOn" : "toggle-background toggleBackgroundOff" }>
+            <div class={ custom ? "toggle-green toggleTextShow" : "toggle-green toggleTextHide" }>On</div>
+            <div class={ custom ? "toggle-red toggleTextHide" : "toggle-red toggleTextShow" }>Off</div>
           </div>
         </div>
       </div>
