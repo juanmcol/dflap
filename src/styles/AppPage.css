@@ -90,10 +90,14 @@ main {
 
       position: absolute;
       z-index: 2;
-      left: 0.22rem;
+      left: 0.25rem;
       
       border-radius: 1rem;
       border: 1px solid gray;
+    }
+
+    .toggle-button:hover {
+      cursor: pointer;
     }
 
     .toggle-background {
@@ -111,13 +115,13 @@ main {
         position: relative;
         width: 100%;
         align-content: center;
-        left: 0.5rem;
+        left: 0.2rem;
       }
       .toggle-red {
         position: relative;
         width: 100%;
         align-content: center;
-        right: 0.5rem;
+        right: 0.4rem;
       }
     }
   }
@@ -305,7 +309,7 @@ footer {
 }
 
 .toggleSwitchOn {
-  translate: 2.54rem;
+  translate: 2.47rem;
   transition: 1s ease;
 }
 
