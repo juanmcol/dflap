@@ -5,8 +5,8 @@ A digital split-flap display
 WIP (Work in Progress)
 
 ## To-do
-- Add options to change positioning.
-- Add more css, and proper animations.
+- Fix nav width for all screen sizes.
+- Make everything more mobile-friendly.
 - Add multiple inputs, one for each row.
 
 ## Technologies
