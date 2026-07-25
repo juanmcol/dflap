@@ -105,7 +105,7 @@ main {
       display: flex;
       align-items: center;
       justify-self: end;
-    }    
+    }
 
     .toggle-button {
       width: 1.3rem;
@@ -116,9 +116,8 @@ main {
       left: 0.8rem;
       
       border-radius: 1rem;
-      border: 1px solid gray;
+      border: 1px solid darkgray;
     }
-
     .toggle-button:hover {
       cursor: pointer;
     }
@@ -150,6 +149,9 @@ main {
         align-content: center;
         right: 0.4rem;
       }
+    }
+    .toggle-background:hover {
+      cursor: pointer;
     }
   }
 

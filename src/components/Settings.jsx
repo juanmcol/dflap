@@ -27,7 +27,7 @@ export const Settings = () => {
         <div class="toggle-name">Custom: </div>
         <div class="toggle">
           <button class={ custom ? "toggle-button toggleSwitchOn" : "toggle-button toggleSwitchOff" } onClick={handleCustom}/>
-          <div class={ custom ? "toggle-background toggleBackgroundOn" : "toggle-background toggleBackgroundOff" }>
+          <div class={ custom ? "toggle-background toggleBackgroundOn" : "toggle-background toggleBackgroundOff" } onClick={handleCustom}>
             <div class={ custom ? "toggle-green toggleTextShow" : "toggle-green toggleTextHide" }>On</div>
             <div class={ custom ? "toggle-red toggleTextHide" : "toggle-red toggleTextShow" }>Off</div>
           </div>
@@ -37,7 +37,7 @@ export const Settings = () => {
         <div class="toggle-name">Justify: </div>
         <div class="toggle">
           <button class={ justify ? "toggle-button toggleSwitchOn" : "toggle-button toggleSwitchOff" } onClick={handleJustify}/>
-          <div class={ justify ? "toggle-background toggleBackgroundOn" : "toggle-background toggleBackgroundOff" }>
+          <div class={ justify ? "toggle-background toggleBackgroundOn" : "toggle-background toggleBackgroundOff" } onClick={handleJustify}>
             <div class={ justify ? "toggle-green toggleTextShow" : "toggle-green toggleTextHide" }>On</div>
             <div class={ justify ? "toggle-red toggleTextHide" : "toggle-red toggleTextShow" }>Off</div>
           </div>
