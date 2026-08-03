@@ -13,6 +13,16 @@ function ContactPage() {
           </ul>
         </nav>
       </header>
+      <main>
+        <h2>Name: Juan Colina</h2>
+        <h3>github: juanmcol</h3>
+        <div id="bio">
+          <></>
+        </div>
+      </main>
+      <footer>
+        <p>copyright juanmcol</p>
+      </footer>
     </>
   )
 }
