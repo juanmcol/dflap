@@ -31,7 +31,6 @@ header {
   }
 
   nav {
-    width: 15%;
     text-decoration: none;
 
     ul {
@@ -69,6 +68,9 @@ main {
       height: 3.24rem;
       width: 10%;
       border: 1px solid gray;
+    }
+    #change-button:hover {
+      cursor: pointer;
     }
   }
 
