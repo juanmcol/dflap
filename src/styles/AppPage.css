@@ -18,15 +18,12 @@ header {
   justify-content: space-between;
 
   #info {
-    width: 15%;
-
     h1 {
       font-family: 'Courier New', Courier, monospace;
     }
   }
 
   #update-info {
-    width: 70%;
     text-align: center;
   }
 
@@ -41,7 +38,7 @@ header {
     }
     a {
       text-decoration: none;
-      margin: 0 1rem;
+      margin: 0 0 0 1rem;
       color: white;
     }
   }
@@ -77,6 +74,7 @@ main {
   #settings-container {
     background-color: lightgray;
     border: 2px solid gray;
+    border-left: none;
     margin-top: 4rem;
     
     display: grid;
@@ -422,4 +420,45 @@ footer {
   justify-self: end;
   bottom: 1.75rem;
   left: 1.5rem;
+}
+
+@media only screen and (max-width: 500px) {
+  header {
+    font-size: 14px;
+  }
+
+  #update-info {
+    display: none;
+  }
+
+  #text-input {
+    width: 35% !important;
+    padding-left: 1rem !important;
+  }
+
+  #change-button {
+    width: 40% !important;
+  }
+
+  #text-input-container {
+    padding: 2rem 2rem !important;
+  }
+
+  #settings-container {
+    margin-top: 2rem !important;
+  }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 900px) {
+  #update-info {
+    display: none;
+  }
+
+  #text-input {
+    width: 40% !important;
+  }
+
+  #change-button {
+    width: 20% !important;
+  }
 }
