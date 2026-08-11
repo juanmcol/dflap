@@ -12,6 +12,8 @@ function SplitFlap({index, element}) {
   const [next, setNext] = useState(data[start + 1]);
   const [animate, setAnimate] = useState(true);
   const [play, setPlay] = useState(true);
+  const onGitHubPages = window.location.hostname.endsWith("github.io");
+  const audioUrl = onGitHubPages ? "dflap/assets/sounds/flipsoundX8.mp3" : "/assets/sounds/flipsoundX8.mp3";
   
 
   const limit = data.length - 1;
@@ -58,7 +60,7 @@ function SplitFlap({index, element}) {
 
   return (
     <div className="split-flap">
-      <audio loop autoPlay muted={ play ? false : true } src="/assets/sounds/flipsoundX8.mp3"></audio>
+      <audio loop autoPlay muted={ play ? false : true } src={audioUrl}></audio>
       <div className="current">
         <div className={ animate ? "top flipTop" : "top" }>{current}</div>
         <div className="bottom">{current}</div>
