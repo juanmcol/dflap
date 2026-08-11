@@ -12,6 +12,7 @@ function SplitFlap({index, element}) {
   const [next, setNext] = useState(data[start + 1]);
   const [animate, setAnimate] = useState(true);
   const [play, setPlay] = useState(true);
+  
 
   const limit = data.length - 1;
   let i1 = start;
@@ -57,7 +58,7 @@ function SplitFlap({index, element}) {
 
   return (
     <div className="split-flap">
-      <audio loop autoPlay muted={ play ? false : true } src="https://raw.githubusercontent.com/juanmcol/dflap/main/src/assets/sounds/flipsoundX8.mp3"></audio>
+      <audio loop autoPlay muted={ play ? false : true } src="/assets/sounds/flipsoundX8.mp3"></audio>
       <div className="current">
         <div className={ animate ? "top flipTop" : "top" }>{current}</div>
         <div className="bottom">{current}</div>
