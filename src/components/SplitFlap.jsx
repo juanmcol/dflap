@@ -57,7 +57,7 @@ function SplitFlap({index, element}) {
 
   return (
     <div className="split-flap">
-      <audio loop autoPlay muted={ play ? false : true } src="src/assets/sounds/flipsoundX8.mp3"></audio>
+      <audio loop autoPlay muted={ play ? false : true } src="https://raw.githubusercontent.com/juanmcol/dflap/main/src/assets/sounds/flipsoundX8.mp3"></audio>
       <div className="current">
         <div className={ animate ? "top flipTop" : "top" }>{current}</div>
         <div className="bottom">{current}</div>
