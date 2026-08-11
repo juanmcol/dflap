@@ -5,21 +5,28 @@ import { useSelector, useDispatch } from "react-redux";
 function SplitFlap({index, element}) {
   const dispatch = useDispatch();
   const data = useSelector(selectDisplayData);
+
+  // flaps
   const flapIndex = useSelector(selectFlapIndex);
   const start = flapIndex[index];
   const stop = element;
   const [current, setCurrent] = useState(data[start]);
   const [next, setNext] = useState(data[start + 1]);
-  const [animate, setAnimate] = useState(true);
-  const [play, setPlay] = useState(true);
-  const onGitHubPages = window.location.hostname.endsWith("github.io");
-  const audioUrl = onGitHubPages ? "dflap/assets/sounds/flipsoundX8.mp3" : "/assets/sounds/flipsoundX8.mp3";
   
+  // animation
+  const [animate, setAnimate] = useState(true);
 
+  // sound
+  const [play, setPlay] = useState(true);
+  const base = window.location.pathname.replace(/\/[^/]*$/, "");
+  const audioUrl = `${base}/assets/sounds/flipsoundX8.mp3`;
+  
+  // limit
   const limit = data.length - 1;
   let i1 = start;
   let i2 = start + 1;
 
+  // flip interval
   useEffect(() => {
     if (current === stop) {
       dispatch(updateFlapIndex({index, value: data.indexOf(current)}));
@@ -50,6 +57,7 @@ function SplitFlap({index, element}) {
     return () => clearInterval(interval);
   }, [current !== stop]);
 
+  // animation interval
   useEffect(() => {
     setAnimate(true);
 
